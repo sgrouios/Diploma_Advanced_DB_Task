@@ -1,0 +1,92 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Stephen\\OneDrive\\Swinburne\\Anh class\\Tasks\\Database - TSQL & Transactions\\Part 2\\Diploma_DB_Task_API\\Diploma_DB_Task_API\\Diploma_DB_Task_API.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Stephen\\OneDrive\\Swinburne\\Anh class\\Tasks\\Database - TSQL & Transactions\\Part 2\\Diploma_DB_Task_API\\Diploma_DB_Task_API\\Diploma_DB_Task_API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Stephen\\OneDrive\\Swinburne\\Anh class\\Tasks\\Database - TSQL & Transactions\\Part 2\\Diploma_DB_Task_API\\Diploma_DB_Task_API\\Diploma_DB_Task_API.csproj",
+        "projectName": "Diploma_DB_Task_API",
+        "projectPath": "C:\\Users\\Stephen\\OneDrive\\Swinburne\\Anh class\\Tasks\\Database - TSQL & Transactions\\Part 2\\Diploma_DB_Task_API\\Diploma_DB_Task_API\\Diploma_DB_Task_API.csproj",
+        "packagesPath": "C:\\Users\\Stephen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Stephen\\OneDrive\\Swinburne\\Anh class\\Tasks\\Database - TSQL & Transactions\\Part 2\\Diploma_DB_Task_API\\Diploma_DB_Task_API\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Stephen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.2, 3.1.2]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
