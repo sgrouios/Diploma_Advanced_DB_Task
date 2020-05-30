@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Stephen\\OneDrive\\Swinburne\\Anh class\\Tasks\\Database - TSQL & Transactions\\Part 2\\Diploma_DB_Task_API\\Diploma_DB_Task_API\\Diploma_DB_Task_API.csproj": {}
+    "D:\\Programming\\Github\\Diploma_Advanced_DB_Task\\Part 2\\Diploma_DB_Task_API\\Diploma_DB_Task_API\\Diploma_DB_Task_API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Stephen\\OneDrive\\Swinburne\\Anh class\\Tasks\\Database - TSQL & Transactions\\Part 2\\Diploma_DB_Task_API\\Diploma_DB_Task_API\\Diploma_DB_Task_API.csproj": {
+    "D:\\Programming\\Github\\Diploma_Advanced_DB_Task\\Part 2\\Diploma_DB_Task_API\\Diploma_DB_Task_API\\Diploma_DB_Task_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Stephen\\OneDrive\\Swinburne\\Anh class\\Tasks\\Database - TSQL & Transactions\\Part 2\\Diploma_DB_Task_API\\Diploma_DB_Task_API\\Diploma_DB_Task_API.csproj",
+        "projectUniqueName": "D:\\Programming\\Github\\Diploma_Advanced_DB_Task\\Part 2\\Diploma_DB_Task_API\\Diploma_DB_Task_API\\Diploma_DB_Task_API.csproj",
         "projectName": "Diploma_DB_Task_API",
-        "projectPath": "C:\\Users\\Stephen\\OneDrive\\Swinburne\\Anh class\\Tasks\\Database - TSQL & Transactions\\Part 2\\Diploma_DB_Task_API\\Diploma_DB_Task_API\\Diploma_DB_Task_API.csproj",
+        "projectPath": "D:\\Programming\\Github\\Diploma_Advanced_DB_Task\\Part 2\\Diploma_DB_Task_API\\Diploma_DB_Task_API\\Diploma_DB_Task_API.csproj",
         "packagesPath": "C:\\Users\\Stephen\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Stephen\\OneDrive\\Swinburne\\Anh class\\Tasks\\Database - TSQL & Transactions\\Part 2\\Diploma_DB_Task_API\\Diploma_DB_Task_API\\obj\\",
+        "outputPath": "D:\\Programming\\Github\\Diploma_Advanced_DB_Task\\Part 2\\Diploma_DB_Task_API\\Diploma_DB_Task_API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Diploma_DB_Task_API.Models;
+using Microsoft.Data.SqlClient;
+using Microsoft.CodeAnalysis;
+using System.Data;
 
 namespace Diploma_DB_Task_API.Controllers
 {
@@ -21,12 +24,34 @@ namespace Diploma_DB_Task_API.Controllers
         }
 
         // GET: api/Location9802
-        [HttpGet]
+        [HttpGet("id")]
+        public async Task<ActionResult<IEnumerable<Location9802>>> GetLocationById(string id)
+        {
+            return await _context.Location9802.FromSqlRaw($"EXEC GET_LOCATION_BY_ID @PLOCID = {id}").ToListAsync();
+        }
+
+        [HttpPost]
+        public string AddLocation(Location9802 location)
+        {
+            var output = new SqlParameter()
+            {
+                ParameterName = "@LOCID",
+                DbType = System.Data.DbType.String,
+                Size = 8,
+                Direction = System.Data.ParameterDirection.Output
+        };
+
+            var sql = $"EXEC ADD_LOCATION '{location.Locationid}', '{location.Locname}', '{location.Address}', '{location.Manager}', @LOCID OUT";
+            _context.Database.ExecuteSqlRaw(sql, output);
+            return output.Value.ToString();
+        }
+
         public async Task<ActionResult<IEnumerable<Location9802>>> GetLocation9802()
         {
             return await _context.Location9802.ToListAsync();
         }
 
+        /*[HttpGet]
         // GET: api/Location9802/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Location9802>> GetLocation9802(string id)
@@ -39,12 +64,12 @@ namespace Diploma_DB_Task_API.Controllers
             }
 
             return location9802;
-        }
+        }*/
 
         // PUT: api/Location9802/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
+        /*[HttpPut("{id}")]
         public async Task<IActionResult> PutLocation9802(string id, Location9802 location9802)
         {
             if (id != location9802.Locationid)
@@ -71,12 +96,12 @@ namespace Diploma_DB_Task_API.Controllers
             }
 
             return NoContent();
-        }
+        }*/
 
         // POST: api/Location9802
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
+        /*[HttpPost]
         public async Task<ActionResult<Location9802>> PostLocation9802(Location9802 location9802)
         {
             _context.Location9802.Add(location9802);
@@ -97,10 +122,10 @@ namespace Diploma_DB_Task_API.Controllers
             }
 
             return CreatedAtAction("GetLocation9802", new { id = location9802.Locationid }, location9802);
-        }
+        }*/
 
         // DELETE: api/Location9802/5
-        [HttpDelete("{id}")]
+        /*[HttpDelete("{id}")]
         public async Task<ActionResult<Location9802>> DeleteLocation9802(string id)
         {
             var location9802 = await _context.Location9802.FindAsync(id);
@@ -114,7 +139,7 @@ namespace Diploma_DB_Task_API.Controllers
 
             return location9802;
         }
-
+        */
         private bool Location9802Exists(string id)
         {
             return _context.Location9802.Any(e => e.Locationid == id);
