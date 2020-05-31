@@ -23,13 +23,14 @@ namespace Diploma_DB_Task_API.Controllers
             _context = context;
         }
 
-        // GET: api/Location9802
-        [HttpGet("id")]
-        public async Task<ActionResult<IEnumerable<Location9802>>> GetLocationById(string id)
+        //GET: api/Location
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Location9802>>> GetLocation()
         {
-            return await _context.Location9802.FromSqlRaw($"EXEC GET_LOCATION_BY_ID @PLOCID = {id}").ToListAsync();
+            return await _context.Location9802.ToListAsync();
         }
 
+        //POST: api/Location
         [HttpPost]
         public string AddLocation(Location9802 location)
         {
@@ -39,110 +40,25 @@ namespace Diploma_DB_Task_API.Controllers
                 DbType = System.Data.DbType.String,
                 Size = 8,
                 Direction = System.Data.ParameterDirection.Output
-        };
+            };
 
-            var sql = $"EXEC ADD_LOCATION '{location.Locationid}', '{location.Locname}', '{location.Address}', '{location.Manager}', @LOCID OUT";
-            _context.Database.ExecuteSqlRaw(sql, output);
+            SqlParameter p1 = new SqlParameter("@PLOCID", location.Locationid);
+            SqlParameter p2 = new SqlParameter("@PLOCNAME", location.Locname);
+            SqlParameter p3 = new SqlParameter("@PLOCADDRESS", location.Address);
+            SqlParameter p4 = new SqlParameter("@PMANAGER", location.Manager);
+
+            var sql = "EXEC ADD_LOCATION @PLOCID, @PLOCNAME, @PLOCADDRESS, @PMANAGER, @LOCID OUT";
+            _context.Database.ExecuteSqlRaw(sql, p1, p2, p3, p4, output);
             return output.Value.ToString();
         }
 
-        public async Task<ActionResult<IEnumerable<Location9802>>> GetLocation9802()
+        // GET: api/Location/id/{id}
+        [HttpGet("id/{id}")]
+        public async Task<ActionResult<IEnumerable<Location9802>>> GetLocationById(string id)
         {
-            return await _context.Location9802.ToListAsync();
+            SqlParameter p1 = new SqlParameter("@PLOCID", id);
+            return await _context.Location9802.FromSqlRaw("EXEC GET_LOCATION_BY_ID @PLOCID", p1).ToListAsync();
         }
 
-        /*[HttpGet]
-        // GET: api/Location9802/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Location9802>> GetLocation9802(string id)
-        {
-            var location9802 = await _context.Location9802.FindAsync(id);
-
-            if (location9802 == null)
-            {
-                return NotFound();
-            }
-
-            return location9802;
-        }*/
-
-        // PUT: api/Location9802/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        /*[HttpPut("{id}")]
-        public async Task<IActionResult> PutLocation9802(string id, Location9802 location9802)
-        {
-            if (id != location9802.Locationid)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(location9802).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!Location9802Exists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }*/
-
-        // POST: api/Location9802
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        /*[HttpPost]
-        public async Task<ActionResult<Location9802>> PostLocation9802(Location9802 location9802)
-        {
-            _context.Location9802.Add(location9802);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (Location9802Exists(location9802.Locationid))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtAction("GetLocation9802", new { id = location9802.Locationid }, location9802);
-        }*/
-
-        // DELETE: api/Location9802/5
-        /*[HttpDelete("{id}")]
-        public async Task<ActionResult<Location9802>> DeleteLocation9802(string id)
-        {
-            var location9802 = await _context.Location9802.FindAsync(id);
-            if (location9802 == null)
-            {
-                return NotFound();
-            }
-
-            _context.Location9802.Remove(location9802);
-            await _context.SaveChangesAsync();
-
-            return location9802;
-        }
-        */
-        private bool Location9802Exists(string id)
-        {
-            return _context.Location9802.Any(e => e.Locationid == id);
-        }
     }
 }
