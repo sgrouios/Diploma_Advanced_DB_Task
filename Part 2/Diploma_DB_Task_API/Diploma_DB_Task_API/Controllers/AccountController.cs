@@ -29,15 +29,14 @@ namespace Diploma_DB_Task_API.Controllers
         }
 
         // GET: api/Account/id/{id}
-        /*[HttpGet("id/{id}")]
-        public async Task<ActionResult<IEnumerable<Clientaccount9802>>> GetAccountById(int id)
+        [HttpGet("id/{id}")]
+        public async Task<ActionResult<IEnumerable<ClientAuthorised>>> GetAccountById(int id)
         {
-
             SqlParameter p1 = new SqlParameter("@PACCOUNTID", id);
             var sql = "EXEC GET_CLIENT_ACCOUNT_BY_ID @PACCOUNTID";
-            return await _context.Database.ExecuteSqlRaw(sql, p1);
+            return await _context.ClientAuthorised.FromSqlRaw(sql, p1).ToListAsync();
 
-        }*/
+        }
 
     }
 }

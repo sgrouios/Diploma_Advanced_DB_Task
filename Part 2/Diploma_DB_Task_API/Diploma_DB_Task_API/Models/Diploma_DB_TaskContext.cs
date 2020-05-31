@@ -17,6 +17,7 @@ namespace Diploma_DB_Task_API.Models
         public virtual DbSet<Accountpayment9802> Accountpayment9802 { get; set; }
         public virtual DbSet<Authorisedperson9802> Authorisedperson9802 { get; set; }
         public virtual DbSet<Clientaccount9802> Clientaccount9802 { get; set; }
+        public virtual DbSet<ClientAuthorised> ClientAuthorised { get; set; }
         public virtual DbSet<Generalledger9802> Generalledger9802 { get; set; }
         public virtual DbSet<Inventory9802> Inventory9802 { get; set; }
         public virtual DbSet<Location9802> Location9802 { get; set; }
@@ -123,6 +124,43 @@ namespace Diploma_DB_Task_API.Models
                 entity.Property(e => e.Creditlimit)
                     .HasColumnName("CREDITLIMIT")
                     .HasColumnType("money");
+            });
+
+            modelBuilder.Entity<ClientAuthorised>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.Property(e => e.Accountid).HasColumnName("ACCOUNTID");
+
+                entity.Property(e => e.Acctname)
+                    .IsRequired()
+                    .HasColumnName("ACCTNAME")
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.Balance)
+                    .HasColumnName("BALANCE")
+                    .HasColumnType("money");
+
+                entity.Property(e => e.Creditlimit)
+                    .HasColumnName("CREDITLIMIT")
+                    .HasColumnType("money");
+
+                entity.Property(e => e.UserId).HasColumnName("USERID");
+
+                entity.Property(e => e.Firstname)
+                    .IsRequired()
+                    .HasColumnName("FIRSTNAME")
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.Surname)
+                    .IsRequired()
+                    .HasColumnName("SURNAME")
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.Email)
+                .IsRequired()
+                .HasColumnName("EMAIL")
+                .HasMaxLength(100);
             });
 
             modelBuilder.Entity<Generalledger9802>(entity =>
