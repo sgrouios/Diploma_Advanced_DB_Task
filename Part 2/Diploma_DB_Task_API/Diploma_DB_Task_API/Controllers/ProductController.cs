@@ -31,7 +31,7 @@ namespace Diploma_DB_Task_API.Controllers
 
         //POST: api/Product
         [HttpPost]
-        public int AddProduct(Product9802 product)
+        public async Task<int> AddProduct(Product9802 product)
         {
             SqlParameter output = new SqlParameter()
             {
@@ -45,7 +45,7 @@ namespace Diploma_DB_Task_API.Controllers
             SqlParameter p3 = new SqlParameter("@PSELLPRICE", product.Sellprice);
 
             var sql = "EXEC @RETURN = ADD_PRODUCT @PRODNAME, @PBUYPRICE, @PSELLPRICE";
-            _context.Database.ExecuteSqlRaw(sql, output, p1, p2, p3);
+            await _context.Database.ExecuteSqlRawAsync(sql, output, p1, p2, p3);
             return Convert.ToInt32(output.Value);
         }
 
