@@ -14,11 +14,11 @@ namespace Diploma_DB_Task_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class Location9802Controller : ControllerBase
+    public class LocationController : ControllerBase
     {
         private readonly Diploma_DB_TaskContext _context;
 
-        public Location9802Controller(Diploma_DB_TaskContext context)
+        public LocationController(Diploma_DB_TaskContext context)
         {
             _context = context;
         }
