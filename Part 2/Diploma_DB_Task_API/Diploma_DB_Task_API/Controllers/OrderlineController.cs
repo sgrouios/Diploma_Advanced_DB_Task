@@ -34,5 +34,15 @@ namespace Diploma_DB_Task_API.Controllers
 
         }
 
+        [HttpDelete]
+        public async Task RemoveProductFromOrder(Orderline9802 order)
+        {
+            SqlParameter p1 = new SqlParameter("@PORDERID", order.Orderid);
+            SqlParameter p2 = new SqlParameter("@PPRODIID", order.Productid);
+            var sql = "EXEC REMOVE_PRODUCT_FROM_ORDER @PORDERID, @PPRODIID";
+
+            await _context.Database.ExecuteSqlRawAsync(sql, p1, p2);
+        }
+
     }
 }

@@ -731,9 +731,9 @@ BEGIN
                             DECLARE @FULLPRICE MONEY =  @TOTALQUANTITY * 
                             (SELECT SELLPRICE FROM PRODUCT9802 WHERE PRODUCTID = @PPRODIID);
 
-                            DECLARE @PRICEPAID MONEY = (SELECT TOTAL FROM ORDER9802 WHERE ORDERID = @PORDERID) + @SUBTOTAL;
+                            DECLARE @NEWTOTAL MONEY = (SELECT TOTAL FROM ORDER9802 WHERE ORDERID = @PORDERID) + @SUBTOTAL;
 
-                            SET @UPDATEDDISCOUNT = (@FULLPRICE - @PRICEPAID) / @FULLPRICE;
+                            SET @UPDATEDDISCOUNT = (@FULLPRICE - @NEWTOTAL) / @FULLPRICE;
 
                             /*ADDED*/
                             
