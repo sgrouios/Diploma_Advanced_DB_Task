@@ -691,7 +691,7 @@ CREATE PROCEDURE ADD_PRODUCT_TO_ORDER
 @PORDERID INT, 
 @PPRODIID INT, 
 @PQTY INT, 
-@DISCOUNT DECIMAL 
+@DISCOUNT DECIMAL (3,2) 
 AS
 BEGIN
     BEGIN TRAN
@@ -722,7 +722,22 @@ BEGIN
                             (SELECT SELLPRICE FROM PRODUCT9802 
                             WHERE PRODUCTID = @PPRODIID)) * (1 - @DISCOUNT);
                             
-                            UPDATE ORDERLINE9802 SET QUANTITY += @PQTY, SUBTOTAL += @SUBTOTAL
+                            /*ADDED*/
+                            DECLARE @UPDATEDDISCOUNT DECIMAL (3,2);
+
+                            DECLARE @TOTALQUANTITY INT  = (SELECT QUANTITY FROM ORDERLINE9802 
+                            WHERE ORDERID = @PORDERID) + @PQTY;
+
+                            DECLARE @FULLPRICE MONEY =  @TOTALQUANTITY * 
+                            (SELECT SELLPRICE FROM PRODUCT9802 WHERE PRODUCTID = @PPRODIID);
+
+                            DECLARE @PRICEPAID MONEY = (SELECT TOTAL FROM ORDER9802 WHERE ORDERID = @PORDERID) + @SUBTOTAL;
+
+                            SET @UPDATEDDISCOUNT = (@FULLPRICE - @PRICEPAID) / @FULLPRICE;
+
+                            /*ADDED*/
+                            
+                            UPDATE ORDERLINE9802 SET QUANTITY += @PQTY, DISCOUNT = @UPDATEDDISCOUNT, SUBTOTAL += @SUBTOTAL
                             WHERE ORDERID = @PORDERID AND PRODUCTID = @PPRODIID;
 
                             UPDATE ORDER9802 SET TOTAL += @SUBTOTAL WHERE ORDERID = @PORDERID;

@@ -57,6 +57,7 @@ namespace Diploma_DB_Task_API.Controllers
             return await _context.OrderDetails.FromSqlRaw(sql, p1).ToListAsync();
         }
 
+        // check this with Tim
         [HttpPut]
         public async Task<IActionResult> FulfillOrder(int orderId)
         {
