@@ -21,8 +21,9 @@ namespace Diploma_DB_Task_API.Controllers
             _context = context;
         }
 
+        //POST: api/Orderline
         [HttpPost]
-        public async Task AddProductToOrder(Orderline9802 order)
+        public async Task<IActionResult> AddProductToOrder(Orderline9802 order)
         {
             SqlParameter p1 = new SqlParameter("@PORDERID", order.Orderid);
             SqlParameter p2 = new SqlParameter("@PPRODID", order.Productid);
@@ -32,8 +33,11 @@ namespace Diploma_DB_Task_API.Controllers
             
             await _context.Database.ExecuteSqlRawAsync(sql, p1, p2, p3, p4);
 
+            return Accepted();
+
         }
 
+        //DELETE: api/Orderline
         [HttpDelete]
         public async Task<IActionResult> RemoveProductFromOrder(Orderline9802 order)
         {

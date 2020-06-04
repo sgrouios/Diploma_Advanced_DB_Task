@@ -23,13 +23,15 @@ namespace Diploma_DB_Task_API.Controllers
 
         //POST: api/Payment
         [HttpPost]
-        public async Task MakeAccountPayment(Accountpayment9802 payment)
+        public async Task<IActionResult> MakeAccountPayment(Accountpayment9802 payment)
         {
             SqlParameter p1 = new SqlParameter("@PACCOUNTID", payment.Accountid);
             SqlParameter p2 = new SqlParameter("@PAMOUNT", payment.Amount);
 
             var sql = "EXEC MAKE_ACCOUNT_PAYMENT @PACCOUNTID, @PAMOUNT";
             await _context.Database.ExecuteSqlRawAsync(sql, p1, p2);
+
+            return Accepted();
         }
     }
 }

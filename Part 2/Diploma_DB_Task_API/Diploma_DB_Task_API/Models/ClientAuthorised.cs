@@ -11,7 +11,7 @@ namespace Diploma_DB_Task_API.Models
         public string Acctname { get; set; }
         public decimal Balance { get; set; }
         public decimal Creditlimit { get; set; }
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
         public string Firstname { get; set; }
         public string Surname { get; set; }
         public string Email { get; set; }

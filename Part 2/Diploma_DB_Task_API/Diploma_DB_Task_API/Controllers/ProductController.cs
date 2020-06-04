@@ -35,7 +35,7 @@ namespace Diploma_DB_Task_API.Controllers
         {
             SqlParameter output = new SqlParameter()
             {
-                ParameterName = "@RETURN",
+                ParameterName = "@PRODUCTID",
                 DbType = System.Data.DbType.Int32,
                 Direction = ParameterDirection.Output
             };
@@ -44,7 +44,7 @@ namespace Diploma_DB_Task_API.Controllers
             SqlParameter p2 = new SqlParameter("@PBUYPRICE", product.Buyprice);
             SqlParameter p3 = new SqlParameter("@PSELLPRICE", product.Sellprice);
 
-            var sql = "EXEC @RETURN = ADD_PRODUCT @PRODNAME, @PBUYPRICE, @PSELLPRICE";
+            var sql = "EXEC @PRODUCTID = ADD_PRODUCT @PRODNAME, @PBUYPRICE, @PSELLPRICE";
             await _context.Database.ExecuteSqlRawAsync(sql, output, p1, p2, p3);
             return Convert.ToInt32(output.Value);
         }

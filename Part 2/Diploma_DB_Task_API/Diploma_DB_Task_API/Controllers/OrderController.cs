@@ -29,6 +29,7 @@ namespace Diploma_DB_Task_API.Controllers
             return await _context.Order9802.FromSqlRaw(sql).ToListAsync();
         }
 
+        //POST: api/Order
         [HttpPost]
         public async Task<int> CreateOrder(Order9802 order)
         {
@@ -48,7 +49,7 @@ namespace Diploma_DB_Task_API.Controllers
             return Convert.ToInt32(orderId.Value);
         }
 
-
+        //GET: api/Order/id
         [HttpGet("id")]
         public async Task<ActionResult<IEnumerable<OrderDetails>>> GetOrderById(Order9802 order)
         {
@@ -57,7 +58,7 @@ namespace Diploma_DB_Task_API.Controllers
             return await _context.OrderDetails.FromSqlRaw(sql, p1).ToListAsync();
         }
 
-        // check this with Tim
+        //PUT: api/Order
         [HttpPut]
         public async Task<IActionResult> FulfillOrder(int orderId)
         {
