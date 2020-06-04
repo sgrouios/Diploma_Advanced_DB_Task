@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Diploma_DB_Task_API.Models;
 using Microsoft.Data.SqlClient;
 
+
 namespace Diploma_DB_Task_API.Controllers
 {
     [Route("api/[controller]")]
@@ -23,7 +24,7 @@ namespace Diploma_DB_Task_API.Controllers
 
         //POST: api/Purchase
         [HttpPost]
-        public async void PurchaseStock(Purchaseorder9802 purchase)
+        public async Task<IActionResult> PurchaseStock(Purchaseorder9802 purchase)
         {
             SqlParameter p1 = new SqlParameter("@PPRODID", purchase.Productid);
             SqlParameter p2 = new SqlParameter("@PLOCID", purchase.Locationid);
@@ -31,6 +32,8 @@ namespace Diploma_DB_Task_API.Controllers
 
             var sql = "EXEC PURCHASE_STOCK @PPRODID, @PLOCID, @PQTY";
             await _context.Database.ExecuteSqlRawAsync(sql, p1, p2, p3);
+            
+            return Accepted();
         }
     }
 }

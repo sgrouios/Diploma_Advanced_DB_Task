@@ -23,7 +23,7 @@ namespace Diploma_DB_Task_API.Controllers
 
         // GET: api/Account
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Clientaccount9802>>> GetClientaccount()
+        public async Task<ActionResult<IEnumerable<Clientaccount9802>>> GetClientaccounts()
         {
             return await _context.Clientaccount9802.ToListAsync();
         }

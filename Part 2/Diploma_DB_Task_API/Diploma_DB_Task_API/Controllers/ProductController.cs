@@ -24,7 +24,7 @@ namespace Diploma_DB_Task_API.Controllers
 
         // GET: api/Product
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Product9802>>> GetProduct()
+        public async Task<ActionResult<IEnumerable<Product9802>>> GetProducts()
         {
             return await _context.Product9802.ToListAsync();
         }

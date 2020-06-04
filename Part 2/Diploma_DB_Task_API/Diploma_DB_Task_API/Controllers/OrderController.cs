@@ -66,7 +66,7 @@ namespace Diploma_DB_Task_API.Controllers
 
             await _context.Database.ExecuteSqlRawAsync(sql, p1);
 
-            return NoContent();
+            return Accepted();
         }
 
     }

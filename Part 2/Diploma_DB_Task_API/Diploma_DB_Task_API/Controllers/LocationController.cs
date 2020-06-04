@@ -25,7 +25,7 @@ namespace Diploma_DB_Task_API.Controllers
 
         //GET: api/Location
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Location9802>>> GetLocation()
+        public async Task<ActionResult<IEnumerable<Location9802>>> GetLocations()
         {
             return await _context.Location9802.ToListAsync();
         }
