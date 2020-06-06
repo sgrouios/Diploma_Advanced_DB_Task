@@ -130,38 +130,6 @@ namespace Diploma_DB_Task_API.Models
             modelBuilder.Entity<ClientAuthorised>(entity =>
             {
                 entity.HasNoKey();
-
-                entity.Property(e => e.Accountid).HasColumnName("ACCOUNTID");
-
-                entity.Property(e => e.Acctname)
-                    .IsRequired()
-                    .HasColumnName("ACCTNAME")
-                    .HasMaxLength(100);
-
-                entity.Property(e => e.Balance)
-                    .HasColumnName("BALANCE")
-                    .HasColumnType("money");
-
-                entity.Property(e => e.Creditlimit)
-                    .HasColumnName("CREDITLIMIT")
-                    .HasColumnType("money");
-
-                entity.Property(e => e.UserId).HasColumnName("USERID");
-
-                entity.Property(e => e.Firstname)
-                    .IsRequired()
-                    .HasColumnName("FIRSTNAME")
-                    .HasMaxLength(100);
-
-                entity.Property(e => e.Surname)
-                    .IsRequired()
-                    .HasColumnName("SURNAME")
-                    .HasMaxLength(100);
-
-                entity.Property(e => e.Email)
-                .IsRequired()
-                .HasColumnName("EMAIL")
-                .HasMaxLength(100);
             });
 
             modelBuilder.Entity<Generalledger9802>(entity =>
@@ -280,40 +248,6 @@ namespace Diploma_DB_Task_API.Models
             modelBuilder.Entity<OrderDetails>(entity =>
             {
                 entity.HasNoKey();
-
-                entity.Property(e => e.Orderid).HasColumnName("ORDERID");
-
-                entity.Property(e => e.Datetimecreated)
-                    .HasColumnName("DATETIMECREATED")
-                    .HasColumnType("datetime");
-
-                entity.Property(e => e.Datetimedispatched)
-                    .HasColumnName("DATETIMEDISPATCHED")
-                    .HasColumnType("datetime");
-
-                entity.Property(e => e.Shippingaddress)
-                    .IsRequired()
-                    .HasColumnName("SHIPPINGADDRESS")
-                    .HasMaxLength(200);
-
-                entity.Property(e => e.Total)
-                    .HasColumnName("TOTAL")
-                    .HasColumnType("money");
-
-                entity.Property(e => e.Userid).HasColumnName("USERID");
-
-                entity.Property(e => e.Productid).HasColumnName("PRODUCTID");
-
-                entity.Property(e => e.Quantity).HasColumnName("QUANTITY");
-
-                entity.Property(e => e.Discount)
-                    .HasColumnName("DISCOUNT")
-                    .HasColumnType("decimal(3, 2)")
-                    .HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.Subtotal)
-                    .HasColumnName("SUBTOTAL")
-                    .HasColumnType("money");
 
             });
 

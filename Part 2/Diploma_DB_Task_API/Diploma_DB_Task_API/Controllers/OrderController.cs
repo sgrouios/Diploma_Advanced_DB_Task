@@ -50,10 +50,10 @@ namespace Diploma_DB_Task_API.Controllers
         }
 
         //GET: api/Order/id
-        [HttpGet("id")]
-        public async Task<ActionResult<IEnumerable<OrderDetails>>> GetOrderById(Order9802 order)
+        [HttpGet("id/{orderId}")]
+        public async Task<ActionResult<IEnumerable<OrderDetails>>> GetOrderById(int orderId)
         {
-            SqlParameter p1 = new SqlParameter("@PORDERID", order.Orderid);
+            SqlParameter p1 = new SqlParameter("@PORDERID", orderId);
             var sql = "EXEC GET_ORDER_BY_ID @PORDERID";
             return await _context.OrderDetails.FromSqlRaw(sql, p1).ToListAsync();
         }
