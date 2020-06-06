@@ -23,7 +23,7 @@ namespace Diploma_DB_Task_API.Controllers
 
         // GET: api/Order
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Order9802>>> GetOrders()
+        public async Task<ActionResult<IEnumerable<Order9802>>> GetOpenOrders()
         {
             var sql = "EXEC GET_OPEN_ORDERS";
             return await _context.Order9802.FromSqlRaw(sql).ToListAsync();

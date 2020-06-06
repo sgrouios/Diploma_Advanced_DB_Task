@@ -53,8 +53,8 @@ namespace Diploma_DB_Task_API.Controllers
         [HttpGet("id/{id}")]
         public async Task<ActionResult<IEnumerable<Product9802>>> GetProductById(string id)
         {
-            SqlParameter p1 = new SqlParameter("@PPRODID", id);
-            return await _context.Product9802.FromSqlRaw("EXEC GET_PRODUCT_BY_ID @PPRODID", p1).ToListAsync();
+            SqlParameter p1 = new SqlParameter("@PRODUCT", id);
+            return await _context.Product9802.FromSqlRaw("EXEC GET_PRODUCT_BY_ID @PRODUCT", p1).ToListAsync();
         }
     }
 }
